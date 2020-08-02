@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>事件</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body onload="finish()" onunload="">
+        <!--onload页面打开时执行，onunload页面关闭时执行-->
+        <!--鼠标移入移出-->
+        <div class="div" onmouseout="onOut(this)" onmouseover="onOver(this)"></div>
+        <script>
+           function onOver(ooj){
+               ooj.innerHTML="Hello";
+           }
+           function onOut(ooj){
+               ooj.innerHTML="World";
+           }
+        </script>
+        <!--/*文本内容改变*/-->
+        <from>
+            <input type="text" onchange="changeDemo(this)">
+        </from>
+        </br>
+        <script>
+            function changeDemo(bg){
+                alert("Hello,change");
+            }
+        </script>
+        <from>
+            <input type="text" onchange="alert('Hello,change')"></br>
+            <!--光标选中/聚集-->
+            <input type="text" onselect="changeAndSelect(this)" onFocus="changeFocus(this)">
+        </from>
+        <script>
+            function changeAndSelect(bg){
+                bg.style.background="lightblue";
+            }
+            function changeFocus(bg){
+                bg.style.background="blue";
+            }
+            function finish(){
+                alert("finish");
+            }
+            window.οnunlοad=function(event){
+                event.returnValue = false;
+            }
+        </script>
+    </body>
+</html>

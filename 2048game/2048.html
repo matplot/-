@@ -1,0 +1,66 @@
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+</head>
+<link href="../css/common.css" rel="stylesheet">
+
+<body>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/eventListener.js"></script>
+    <script type="text/javascript" src="../js/domOperation.js"></script>
+    <div id="main">
+        <div id="refreshDiv" onclick="gameRestart()">
+            <span id="refreshButton">
+                <img src="../resource/refreshButton.png"  alt="refresh" />
+                <a>重新开始</a>
+            </span>
+        </div>
+        <div id="mainTable">
+        </div>
+        <div id="explation">
+            <span>
+                2048游戏说明：<br>
+                按上下左右方向键可以移动有数字的方块，<br>
+                相邻的相同数字的方块往一个方向移动会合并成更大的数字。<br>
+                当最大数字出现2048时，游戏胜利！<br>
+                温馨提示：你可以使用空格键回退上一步。
+            </span>
+        </div>
+        <div id="rights">
+            <span>
+                All rights reserved to S.C. Contact me at 857025773@qq.com. 
+            </span>
+        </div>
+    </div>
+    
+    <!-- 操作 -->
+    <div id="keys">
+        <div>
+            <span id="moveUpButton"onclick="move('up')">
+                <img src="../resource/direction.png"  alt="direction" />
+            </span>
+        </div>
+        <div>
+            <span id="moveLeftButton"onclick="move('left')">
+                <img src="../resource/direction.png"  alt="direction" />
+            </span>
+            <span id="moveBackButton" onclick="eventSpaceKey()">
+                <img src="../resource/moveBack.png"  alt="moveBack" />
+            </span>
+            <span id="moveRightButton"onclick="move('right')">
+                <img src="../resource/direction.png"  alt="direction" />
+            </span>
+        </div>
+        <div>
+            <span id="moveDownButton"onclick="move('down')">
+                <img src="../resource/direction.png"  alt="direction" />
+            </span>
+        </div>
+    </div>
+    
+    
+    <script type="text/javascript">
+        window.onload = function(){
+                pageInit();
+        }
+    </script>
+</body>

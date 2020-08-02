@@ -1,0 +1,244 @@
+<!DOCTYPE>
+<html>
+ <head>
+ <title>掷骰子游戏 author:SenDog</title>
+ 
+ <meta charset="UTF-8">
+  <script>
+   var leftX = 150;
+   var topY = 100;
+   var diceX = 80;
+   var diceY = 80;
+   var dotR = 4;
+   var count = 0;
+   var lastNum = 0;
+   var flag = false;
+   
+   function clickMe() {
+    count = 0;
+    if(flag) {
+     return false;
+    }
+    flag = true;
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.beginPath();
+ 
+    // ctx.strokeRect(leftX,topY,diceX,diceY);//绘制矩形 加粗
+    //ctx.strokeRect(leftX+150,topY,diceX,diceY);
+    setTimeout(function(){
+     random(ctx);},200);
+    
+   }
+   
+   function drawDice(ctx,randomNum,randomNum2) {//绘制 骰子 123456的点数
+    ctx.clearRect(leftX,topY,diceX,diceY);
+     switch(randomNum) {
+      case 1:
+       draw1();
+       break;
+      case 2:
+       draw2();
+       break;
+      case 3:
+       draw3();
+       break;
+      case 4:
+       draw4();
+       break;
+      case 5:
+       draw5();
+       break;
+      case 6:
+       draw6();
+       break;
+     }
+ 
+ 
+    ctx.clearRect(leftX+150,topY,diceX,diceY);
+    switch(randomNum2) {
+     case 1:
+      draw11();
+       break;
+     case 2:
+      draw22();
+       break;
+     case 3:
+      draw33();
+      break;
+     case 4:
+      draw44();
+      break;
+     case 5:
+      draw55();
+      break;
+     case 6:
+      draw66();
+      break;
+    }
+ 
+     count++;
+     if(count>=20) {
+      if(randomNum+randomNum2==7) {
+       alert("骰子1："+randomNum+"，骰子2:"+randomNum2+"总和为7您赢了");
+ 
+      }
+      else {
+      alert("骰子1："+randomNum+"；骰子2:"+randomNum2);
+ 
+      }
+      flag = false;
+      return false;
+     } else {
+      setTimeout(function(){
+       random(ctx);
+      },200-count);
+     }
+   }
+   
+   function random(ctx) {//生成骰子点数，如果和上一步的点数相同重新生成点数，并绘制
+    var randomNum = Math.floor(Math.random()*6)+1;
+    var randomNum2 = Math.floor(Math.random()*6)+1;
+    if(randomNum == lastNum) {
+     random(ctx);
+    } else {
+     lastNum = randomNum;
+     drawDice(ctx,randomNum,randomNum2);
+ 
+    }
+    
+   }
+   
+   function commonDraw(ctx,dotX,dotY) {
+    ctx.beginPath();
+    ctx.arc(dotX,dotY,dotR,0,2*Math.PI,false);
+ 
+    ctx.stroke();
+    ctx.fill(); 
+   }
+ 
+ 
+ 
+   function draw1() {
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.fillStyle="#0000ff";
+    var dotX = leftX+diceX/2;
+    var dotY = topY+diceY/2;
+    commonDraw(ctx,dotX,dotY);
+   }
+   
+   function draw2() {
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.fillStyle="#99FF66";
+    var dotX = leftX+4*dotR;
+    var dotY = topY+4*dotR;
+    commonDraw(ctx,dotX,dotY);
+    var dotX = leftX+diceX-4*dotR;
+    var dotY = topY+diceY-4*dotR;
+    commonDraw(ctx,dotX,dotY);
+   }
+   
+   function draw3() {
+    draw1();
+    draw2();
+   }
+   
+   function draw4() {
+    draw2();
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.fillStyle="#99CC00";
+    var dotX = leftX+diceX-4*dotR;
+    var dotY = topY+4*dotR;
+    commonDraw(ctx,dotX,dotY);
+    var dotX = leftX+4*dotR;
+    var dotY = topY+diceY-4*dotR;
+    commonDraw(ctx,dotX,dotY);
+   }
+   
+   function draw5(){
+    draw1();
+    draw4();
+   }
+   function draw6(){
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.fillStyle="#996633";
+    var dotX = leftX+4*dotR;
+    var dotY = topY+diceY/2
+    commonDraw(ctx,dotX,dotY);
+    var dotX = leftX+diceY-4*dotR;
+    commonDraw(ctx,dotX,dotY);
+    draw4();
+   }
+ 
+ 
+ 
+   /* -------------骰子2----------------*/
+   function draw11() {
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.fillStyle="#0000ff";
+    var dotX = leftX+diceX/2+150;
+    var dotY = topY+diceY/2;
+    commonDraw(ctx,dotX,dotY);
+   }
+ 
+   function draw22() {
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.fillStyle="#99FF66";
+    var dotX = leftX+4*dotR+150;
+    var dotY = topY+4*dotR;
+    commonDraw(ctx,dotX,dotY);
+    var dotX = leftX+diceX-4*dotR+150;
+    var dotY = topY+diceY-4*dotR;
+    commonDraw(ctx,dotX,dotY);
+   }
+ 
+   function draw33() {
+    draw11();
+    draw22();
+   }
+   function draw44() {
+    draw22();
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.fillStyle="#99CC00";
+    var dotX = leftX+diceX-4*dotR+150;
+    var dotY = topY+4*dotR;
+    commonDraw(ctx,dotX,dotY);
+    var dotX = leftX+4*dotR+150;
+    var dotY = topY+diceY-4*dotR;
+    commonDraw(ctx,dotX,dotY);
+   }
+   function draw55(){
+    draw11();
+    draw44();
+   }
+   function draw66(){
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.fillStyle="#996633";
+    var dotX = leftX+150+4*dotR;
+    var dotY = topY+diceY/2
+    commonDraw(ctx,dotX,dotY);
+    var dotX = leftX+150+diceY-4*dotR;
+    commonDraw(ctx,dotX,dotY);
+    draw44();
+   }
+   function init() {
+    var ctx = document.getElementById("canvas").getContext('2d');
+    ctx.beginPath();
+    ctx.strokeRect(leftX,topY,diceX,diceY);//绘制灰色框框 第一个骰子
+    ctx.strokeRect(leftX+150,topY,diceX,diceY);//第二个骰子的灰色框框
+    ctx.stroke();
+    draw6();
+    draw66();
+    
+   }
+  </script>
+ </head>
+ 
+ <body οnlοad="init();">
+  <canvas id="canvas" width="600" height="300" style="background-color:#CCFFCC">
+   your brower is not support html5
+  </canvas>
+ 
+  
+  <input type="button" value="开始" οnclick="clickMe();"/>
+ </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <div id="div">
+            <button id="btn1" onclick="demo()">按钮</button>
+            </br>
+            <button id="btn2">按钮</button>
+            </br>
+            <button id="btn3">按钮</button>
+            </br>
+            <button id="btn4">按钮</button>
+        </div>
+        <script>
+            //html事件处理
+           function demo(){
+               alert("Hello");
+           }
+           //DOM0级事件处理
+            var btn2 = document.getElementById("btn2");
+            btn2.onclick = function (){alert("DOM0级处理程序1")};
+            btn2.onclick = function (){alert("DOM0级处理程序2")};//btn2 = null;/清除btn
+            //DOM2级处理事件
+            var btn3 = document.getElementById("btn3");
+            btn3.onclick = addEventListener("click",demo1);
+            btn3.onclick = addEventListener("click",demo2);
+            function demo1(){
+                alert("DOM2级事件处理程序1");
+            }
+            function demo2(){
+                alert("DOM2级事件处理程序2");
+            }
+            //考虑到兼容问题对不同浏览器判断
+            var btn4 = document.getElementById("btn4")
+            if(btn4.EventListener){
+                btn4.EventListener("click",demo);
+            }else if(btn4.attachEvent){
+                btn4.attachEvent("onclick",demo);
+            }else{
+                btn4.onclick = demo();
+            }
+        </script>
+    </body>
+</html>

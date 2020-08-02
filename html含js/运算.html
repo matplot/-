@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Chapter 2,Example 1</title>
+	</head>
+	<body>
+        <p>i = 10,j = 10,i+j = ?</p>
+        <p id="sumid"></p>
+        <button onclick="mysum()">result</button>
+		<script>
+            function mysum(){
+                var i = 10;
+                var j = 10;
+                var m = i+j;
+                //document.write(m);
+                document.getElementById("sumid").innerHTML=m;
+            }
+		</script>
+	</body>
+</html>

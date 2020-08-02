@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <p id="div"Hello</p>
+        <button onclick="demo()">button</button>
+        <p id="pid">Hello</p>
+        <button id="btn">button</button>
+        <script>
+           function demo(){
+               document.getElementById("div").style.background="blue";//如果更改了函数名则之前函数名也要改变，于是可以用句柄简化
+           }
+           document.getElementById("btn").addEventListener("click",Hello())//第一
+           function Hello(){
+               alert("Hello");
+           }
+        </script>
+    </body>
+</html>

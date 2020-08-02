@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>web练习--表格)</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="keywords" content="web练习">
+		<meta name="description" content="web">
+		<meta name="author" content="des">
+		<style>
+			table{
+				border:1px solid black;
+				border-collapse:collapse;
+				}
+			thead th{
+				background:grey;
+				}
+			tbody th{
+				background:lightgrey;
+				}
+			td{
+				border:1px solid red;
+				padding:5px;
+				}
+			th{
+				border:1px solid blue;
+				padding:5px;
+				color:white;
+				}
+			caption{
+			padding:5px;
+				}
+		</style>
+	</head>
+	<table>
+		<!--基本表格-->
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+		</tr>
+		<tr>
+			<td>老番茄</td>
+			<td>22</td>
+		</tr>
+	</table>
+	<p>next one</p>
+	<table>
+		<!--加废话(会发现随着内容加多，表格会自适应）-->
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>随便说说</th>
+		</tr>
+		<tr>
+			<td>老番茄</td>
+			<td>22</td>
+			<td>我是杀手，我莫得感情</td>
+		</tr>
+	</table>
+	<p>next one</p>
+	<!--表格加标题用collapse元素实现-->
+	<table>
+		<!--基本表格-->
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+		</tr>
+		<tr>
+			<td>老番茄</td>
+			<td>22</td>
+		</tr>
+	</table>
+	<p>next one</p>
+	<table>
+		<caption>老番茄</caption>
+		<!--加标题-->
+		<thead>
+		<tr>
+			<th>姓名</th>
+			<th>特长</th>
+			<th>口头禅</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<th>克莱曼婷</th>
+			<td>暴打黑蜀黍</td>
+			<td>婷哥牛批</td>
+		</tr>
+		<tr>
+			<th>杀手47</th>
+			<td>伪装潜行</td>
+			<td>我是杀手，我莫得感情</td>
+		</tr>
+		<tr>
+			<th>蝙蝠侠</th>
+			<td>哥谭市义警</td>
+			<td>马步冲拳</td>
+		</tr>
+		<tr>
+			<th>赵赵</th>
+			<td>口袋妖怪训练师</td>
+			<td>翡翠色波纹疾走</td>
+		</tr>
+		</tbody>
+		<!--加tfoot-->
+		<tfoot>
+			<tr>
+				<td colspan="4">非官方数据，仅供娱乐</td>
+			</tr>
+		</tfoot>
+	</table>	
+</html> 
