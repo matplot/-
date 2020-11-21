@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../lib/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../lib/lodash.js"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="hdcms">
+        <li v-for="v in comments">
+            {{v.content}}
+            <button v-on:click="remove()">删除</button>
+        </li>
+        <textarea v-model="current_content" cols="30" rows="10"></textarea><br/>
+        <button v-on:click="push('end')">send</button>
+        <button v-on:click="push('pre')">sendfirst</button>
+        <br/>
+        <button v-on:click="del('first')">delf</button>
+        <button v-on:click="del('last')">del</button>
+    </div>
+    <script>
+        var a = [1,2];
+        a.push(3);
+        console.log(a);
+        //绑定的可以是变量
+        // vue的push用于操作data集
+        var app = new Vue({
+            el:'#hdcms',
+            data: {
+                current_content:'',
+                comments: [
+                    {content:'hdr'},
+                    {content:'xj'},
+                ]
+            },
+            methods:{
+                remove(k){
+                    this.comments.splice(k,1);
+                },
+                push(type){
+                    let content = {content:this.current_content};
+                    switch(type) {
+                        case 'end':
+                            this.comments.push(content);
+                            break;
+                        case 'pre':
+                            this.comments.unshift(content);
+                            break;
+                    }
+                    this.current_content='';
+                },
+                del(type){
+                    switch(type) {
+                        case 'first':
+                            this.comments.pop();
+                            break;
+                        case 'last':
+                            this.comments.shift();
+                    }
+                }
+            }
+        }); 
+    </script>
+</body>
+</html> 
